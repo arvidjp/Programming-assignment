@@ -11,6 +11,7 @@
 		EF821318286B703C001B2610 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF821317286B703C001B2610 /* ContentView.swift */; };
 		EF82131A286B704E001B2610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF821319286B704E001B2610 /* Assets.xcassets */; };
 		EF82131D286B704E001B2610 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF82131C286B704E001B2610 /* Preview Assets.xcassets */; };
+		EF985AC92881F3EC00CFF698 /* MyExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF985AC82881F3EB00CFF698 /* MyExercises.swift */; };
 		EFA6F59C286F38A100D12C79 /* MyWorkouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA6F59B286F38A100D12C79 /* MyWorkouts.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +21,7 @@
 		EF821317286B703C001B2610 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EF821319286B704E001B2610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF82131C286B704E001B2610 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EF985AC82881F3EB00CFF698 /* MyExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyExercises.swift; sourceTree = "<group>"; };
 		EFA6F59B286F38A100D12C79 /* MyWorkouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkouts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,6 +58,7 @@
 				EF821315286B703C001B2610 /* Training_applicationApp.swift */,
 				EF821317286B703C001B2610 /* ContentView.swift */,
 				EFA6F59B286F38A100D12C79 /* MyWorkouts.swift */,
+				EF985AC82881F3EB00CFF698 /* MyExercises.swift */,
 				EF821319286B704E001B2610 /* Assets.xcassets */,
 				EF82131B286B704E001B2610 /* Preview Content */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA6F59C286F38A100D12C79 /* MyWorkouts.swift in Sources */,
+				EF985AC92881F3EC00CFF698 /* MyExercises.swift in Sources */,
 				EF821318286B703C001B2610 /* ContentView.swift in Sources */,
 				EF821316286B703C001B2610 /* Training_applicationApp.swift in Sources */,
 			);
