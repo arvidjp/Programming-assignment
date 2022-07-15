@@ -4,11 +4,14 @@ The aim of this assignment is to create an application for iOS.
 The application I am creating is a training application where the user can add their own exercises and use those exercises when creating workouts.
 
 WORKOUTS
-- Will contain one or more exercises
+
+Will contain one or more exercises
 
 
 EXERCISES
-- Information that a exercise can insit of
+
+Information that a exercise can insit of
+
 * Name of exercise
 * Short description of the exercise
 * How many repetitions of the exercise the user wants
