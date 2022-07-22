@@ -8,38 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+   
     var body: some View {
         ZStack {
             LinearGradient(colors: [.black, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-        
-        VStack {
-            
-            Minaträningspass()
-            MinaÖvningar()
-            DelaÖvningar()
-            Mittkonto()
-            Spacer()
-            signout
-            //ZStack {
+            .edgesIgnoringSafeArea(.all)
+            NavigationView {
                 
+                NavigationLink {
+                    //MyExercises(exercises: exercises)
+                } label: {
+                    MinaÖvningar()
+                }
+                
+                //VStack {
+                
+                
+                //Minaträningspass()
+                //MinaÖvningar()
+                //DelaÖvningar()
+                //Mittkonto()
+                //Spacer()
+                //signout
+                //ZStack {
+                //}
                 //signout
                 //Spacer()
-            //}
-            //.padding(.horizontal)
-        }
-        .foregroundColor(Color.white)
-        .padding(.horizontal)
-        
+                //}
+                //.padding(.horizontal)
+                //}
+                
+                //.foregroundColor(Color.white)
+                //.padding(.horizontal)
+              
+               
+            }
+            
         }
     }
-}
-
-var signout: some View {
-    Button(action:{}, label: { Text("Logga ut")
-            .foregroundColor(Color.red)
+    
+    var signout: some View {
+        Button(action:{}, label: { Text("Logga ut")
+                .foregroundColor(Color.red)
             .font(.title3)})
-}
+    }
 
 struct Minaträningspass: View {
     var body: some View {
@@ -63,6 +75,7 @@ struct MinaÖvningar: View {
         ZStack{
             RoundedRectangle(cornerRadius: 40)
                 .fill()
+                .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 40)
                 .stroke(lineWidth: 4)
                 Text("Mina övningar")
@@ -139,3 +152,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+}

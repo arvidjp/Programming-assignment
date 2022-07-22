@@ -8,36 +8,43 @@
 import SwiftUI
 
 struct MyExercises: View {
+    var exercises: [ExerciseData] = ExerciseDataList.Exercises
+    
     var body: some View {
-        
-        VStack {
-            NavigationView {
+        NavigationView {
+            List(exercises, id: \.id) { övning in
+                NavigationLink(destination: ExerciseDetailView(övning: övning), label:{
+                    ÖvningarCell(övning: övning)
+                    
+                })
                 
+            } .navigationTitle("Mina övningar")
             
-                List {
-                    
-                    Text("Exercise")
-                        .font(.system(size: 32, weight: .medium, design: .default))
-                        .padding()
-                    
-         
-                
-            }
-                .navigationBarTitle(Text("My Exercises"), displayMode: .large)
         }
-            Button("Add exercise"){
+    }
+        
+}
+
+struct ÖvningarCell: View {
+    var övning: ExerciseData
+    
+    var body: some View{
+        HStack {
+            Text (övning.exerciseName)
+                    .fontWeight(.bold)
+                    .padding()
+                    
                 
-                
-                print("Exercise added!")
-                
-            } .padding()
-            .background(.gray)
-            .foregroundColor(Color.white)
-            .cornerRadius(15)
+                VStack (alignment: .leading, spacing: 3) {
+                    Text("Antal rep: \(övning.exerciseRep)")
+                    Text("Antal set: \(övning.exerciseSet)")
+                    Text("Vila: \(övning.exerciseRest)")
+                    Text("Vikt: \(övning.exerciseWeight) kg")
+                    
+                } .padding()
         }
         
     }
-        
 }
 
 struct MyExercises_Previews: PreviewProvider {
