@@ -1,5 +1,5 @@
 # Programming-assignment
-
+// To install the application right now the user have to use Xcode and run it via the program. 
 The aim of this assignment is to create an application for iOS.
 The application I am creating is a training application where the user can add their own exercises and use those exercises when creating workouts.
 
@@ -18,3 +18,5 @@ Information that a exercise can insit of
 * How may sets of the exercise the user wants
 * Time between sets - up to the user to deside / if possible a timer in the workout view
 * The loading of the workouts - counted in kg
+
+
