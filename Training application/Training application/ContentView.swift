@@ -8,65 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
-   
+    
     var body: some View {
-        ZStack {
-            LinearGradient(colors: [.black, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
-            .edgesIgnoringSafeArea(.all)
+        
             NavigationView {
                 
-                NavigationLink {
-                    //MyExercises(exercises: exercises)
-                } label: {
+                VStack {
+                NavigationLink (destination: MyWorkouts()) {
+                    Minaträningspass()
+                }
+                NavigationLink(destination:MyExercises()) {
+                    
                     MinaÖvningar()
+                    
+                }
+                    
+                
+                } .padding()
                 }
                 
-                //VStack {
-                
-                
-                //Minaträningspass()
-                //MinaÖvningar()
-                //DelaÖvningar()
-                //Mittkonto()
-                //Spacer()
-                //signout
-                //ZStack {
-                //}
-                //signout
-                //Spacer()
-                //}
-                //.padding(.horizontal)
-                //}
-                
-                //.foregroundColor(Color.white)
-                //.padding(.horizontal)
-              
-               
-            }
+            
             
         }
     }
     
-    var signout: some View {
-        Button(action:{}, label: { Text("Logga ut")
-                .foregroundColor(Color.red)
-            .font(.title3)})
-    }
+   // var signout: some View {
+     //   Button(action:{}, label: { Text("Logga ut")
+       //         .foregroundColor(Color.red)
+         //   .font(.title3)})
+  //  }
 
 struct Minaträningspass: View {
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 40)
                 .fill()
+                .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 40)
                 .stroke(lineWidth: 4)
                 Text("Mina träningspass")
                 .foregroundColor(Color.orange)
                 .font(.largeTitle)
         } .aspectRatio(10/3, contentMode: .fit)
-        .onTapGesture {
-           
-        }
+        
     }
 }
 
@@ -82,9 +66,7 @@ struct MinaÖvningar: View {
                 .foregroundColor(Color.orange)
                 .font(.largeTitle)
         } .aspectRatio(10/3, contentMode: .fit)
-        .onTapGesture {
-            
-        }
+        
     }
 }
 
@@ -125,24 +107,9 @@ struct Mittkonto: View{
     }
 }
         
-// Sidan om användaren träningspass
 
-struct trainings: View {
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 40)
-                .fill()
-            RoundedRectangle(cornerRadius: 40)
-                .stroke(lineWidth: 4)
-                Text("Övning 1")
-                .foregroundColor(Color.orange)
-                .font(.largeTitle)
-        } .aspectRatio(10/3, contentMode: .fit)
-        .onTapGesture {
-            
-                }
-            }
-        }
+
+
     
 
 
@@ -152,4 +119,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-}
+

@@ -4,8 +4,20 @@
 //
 //  Created by Arvid Jedeur-Palmgren on 2022-07-20.
 //
-
+import Combine
 import SwiftUI
+
+class ÖvningsData: ObservableObject {
+ 
+var didChange = PassthroughSubject<Void, Never>()
+    var namnPåÖvning = "" {didSet { didChange.send()}}
+    var beskrivningAvÖvning = "" {didSet { didChange.send()}}
+    var antalRepetitioner = "" {didSet { didChange.send()}}
+    var antalSet = "" {didSet { didChange.send()}}
+    var viloTid = "" {didSet { didChange.send()}}
+    var belastning = "" {didSet { didChange.send()}}
+}
+
 
 struct ExerciseData: Identifiable {
     let id = UUID()
@@ -16,22 +28,22 @@ struct ExerciseData: Identifiable {
     let exerciseRest: Double
     let exerciseWeight: Int
     
+    
 }
 
 struct ExerciseDataList {
-    static let Exercises = [
-        ExerciseData(exerciseName: "Bänkpress", exerciseDescription: "Tränar bröstmusklerna", exerciseRep: 6, exerciseSet: 4, exerciseRest: 1.30, exerciseWeight: 60),
-        
-        ExerciseData(exerciseName: "Knäböj", exerciseDescription: "Tränar benen", exerciseRep: 5, exerciseSet: 5, exerciseRest: 2.00, exerciseWeight: 80),
-        
-        ExerciseData(exerciseName: "Marklyft", exerciseDescription: "Tränar ben, bål och rygg", exerciseRep: 2, exerciseSet: 3, exerciseRest: 3.00, exerciseWeight: 120)
-        
-        
-        
-        
     
-    ]
+   // @Binding var Exercises : [String]
+    static let Exercises = [ExerciseData(exerciseName: "bänk", exerciseDescription: "tränar börst", exerciseRep: 4, exerciseSet: 5, exerciseRest: 1.30, exerciseWeight: 60)]
+    
+   
 }
+
+
+
+
+
+
 
 //struct ExerciseData_Previews: PreviewProvider {
     //static var previews: some View {

@@ -8,20 +8,30 @@
 import SwiftUI
 
 struct MyExercises: View {
+    
     var exercises: [ExerciseData] = ExerciseDataList.Exercises
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
+        VStack {
             List(exercises, id: \.id) { övning in
                 NavigationLink(destination: ExerciseDetailView(övning: övning), label:{
                     ÖvningarCell(övning: övning)
                     
                 })
                 
+
+                
+                
             } .navigationTitle("Mina övningar")
             
+            NavigationLink(destination: AddExercise()) {
+                Text("Lägg till ny övning")
+            }
+       // }
         }
-    }
+        }
+        
         
 }
 
@@ -31,21 +41,25 @@ struct ÖvningarCell: View {
     var body: some View{
         HStack {
             Text (övning.exerciseName)
-                    .fontWeight(.bold)
-                    .padding()
-                    
+                .fontWeight(.bold)
+                .padding()
+            
+            
+            VStack (alignment: .leading, spacing: 3) {
+                Text("Antal rep: \(övning.exerciseRep)")
+                Text("Antal set: \(övning.exerciseSet)")
+                Text("Vila: \(övning.exerciseRest)")
+                Text("Vikt: \(övning.exerciseWeight) kg")
                 
-                VStack (alignment: .leading, spacing: 3) {
-                    Text("Antal rep: \(övning.exerciseRep)")
-                    Text("Antal set: \(övning.exerciseSet)")
-                    Text("Vila: \(övning.exerciseRest)")
-                    Text("Vikt: \(övning.exerciseWeight) kg")
-                    
-                } .padding()
+            } .padding()
         }
         
     }
 }
+
+
+
+
 
 struct MyExercises_Previews: PreviewProvider {
     static var previews: some View {
