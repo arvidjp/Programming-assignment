@@ -9,41 +9,37 @@ import SwiftUI
 
 struct MyExercises: View {
     
-    var exercises: [ExerciseData] = ExerciseDataList.Exercises
+    @EnvironmentObject var exerciseData : ÖvningsData
     
     var body: some View {
-        //NavigationView {
+        
         VStack {
-            List(exercises, id: \.id) { övning in
-                NavigationLink(destination: ExerciseDetailView(övning: övning), label:{
-                    ÖvningarCell(övning: övning)
+            List { ForEach(exerciseData.övningar)
+                { övning in
+                    NavigationLink(destination: ExerciseDetailView(övning: övning), label:{
+                        ÖvningarCell(övning: övning)
+                        
+                    })
                     
-                })
-                
-
-                
+                } .onDelete(perform: exerciseData.deleteÖvning)
                 
             } .navigationTitle("Mina övningar")
             
             NavigationLink(destination: AddExercise()) {
                 Text("Lägg till ny övning")
             }
-       // }
         }
-        }
-        
-        
+    }
 }
 
 struct ÖvningarCell: View {
-    var övning: ExerciseData
+    var övning: ExerciseDataModel
     
     var body: some View{
         HStack {
             Text (övning.exerciseName)
                 .fontWeight(.bold)
                 .padding()
-            
             
             VStack (alignment: .leading, spacing: 3) {
                 Text("Antal rep: \(övning.exerciseRep)")
@@ -53,16 +49,13 @@ struct ÖvningarCell: View {
                 
             } .padding()
         }
-        
     }
 }
-
-
-
 
 
 struct MyExercises_Previews: PreviewProvider {
     static var previews: some View {
         MyExercises()
+            .environmentObject(ÖvningsData())
     }
 }

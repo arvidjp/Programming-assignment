@@ -8,41 +8,43 @@
 import SwiftUI
 
 struct MyWorkouts: View {
-    var workouts: [WorkoutData] = WorkoutList.Workouts
-   
+
+    @EnvironmentObject var workoutData : WorkoutsData
+  
+    
     var body: some View {
-        //NavigationView{
-            List(workouts, id: \.id) { träningar in
-                NavigationLink(destination: WorkoutDetailView(övningarTräningspass: träningar)) {
-                    TräningspassCell(träningspass: träningar)
+        VStack {
+            List { ForEach(workoutData.workouts)
+                { träning in
+                    NavigationLink(destination: WorkoutDetailView(träning: träning), label:{
+                        TräningspassCell(träningspass: träning)
+                    })
                 }
-                
-                
-            } .navigationTitle("Mina träningspass")
-        //}
+                .onDelete(perform: workoutData.deleteWorkout)
+            }
+        } .navigationTitle("Mina träningspass")
         
+        NavigationLink(destination: AddWorkout()) {
+            Text("Lägg till nytt träningspass")
+        }
     }
 }
 
 struct TräningspassCell: View {
-    var träningspass: WorkoutData
+    let träningspass: WorkoutDataModel
     
     var body: some View{
-        HStack{
             Text (träningspass.workoutName)
                 .fontWeight(.bold)
                 .padding()
-            VStack(alignment: .leading, spacing: 3) {
-                Text(träningspass.ExerciseInWorkout.exerciseName)
-                    
-                Text(träningspass.ExerciseInWorkout.exerciseName)
-            }
-        }
+            
+        
     }
 }
 
 struct MyWorkouts_Previews: PreviewProvider {
     static var previews: some View {
         MyWorkouts()
+            .environmentObject(WorkoutsData())
     }
 }

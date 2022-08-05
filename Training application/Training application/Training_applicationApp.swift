@@ -9,10 +9,17 @@ import SwiftUI
 
 @main
 struct Training_applicationApp: App {
+    
+    @StateObject var exerciseData : ÖvningsData = ÖvningsData()
+    @StateObject var workoutData : WorkoutsData = WorkoutsData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(exerciseData)
+                .environmentObject(workoutData)
             
         }
+        
     }
 }

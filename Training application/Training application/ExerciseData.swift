@@ -8,36 +8,45 @@ import Combine
 import SwiftUI
 
 class ÖvningsData: ObservableObject {
- 
-var didChange = PassthroughSubject<Void, Never>()
-    var namnPåÖvning = "" {didSet { didChange.send()}}
-    var beskrivningAvÖvning = "" {didSet { didChange.send()}}
-    var antalRepetitioner = "" {didSet { didChange.send()}}
-    var antalSet = "" {didSet { didChange.send()}}
-    var viloTid = "" {didSet { didChange.send()}}
-    var belastning = "" {didSet { didChange.send()}}
+    
+    @Published var övningar : [ExerciseDataModel] = [] {
+        didSet {
+            saveÖvningar()
+        }
+    }
+    let övningarKey : String = "övningar_list"
+    
+    init() {
+        getItems()
+        
+    }
+    func getItems() {
+        guard
+            let data = UserDefaults.standard.data(forKey: övningarKey),
+            let saveÖvningar = try? JSONDecoder().decode([ExerciseDataModel].self, from: data)
+        else {return}
+        self.övningar = saveÖvningar
+    }
+    
+    func deleteÖvning(indexSet: IndexSet) {
+        övningar.remove(atOffsets: indexSet)
+    }
+    
+    func addTheExercise(exerciseName : String, exerciseRep: String, exerciseSet: String, exerciseRest: String, exerciseWeight: String ) {
+        let newExercise = ExerciseDataModel(exerciseName: exerciseName, exerciseRep: exerciseRep, exerciseSet: exerciseSet, exerciseRest: exerciseRest, exerciseWeight: exerciseWeight)
+        övningar.append(newExercise)
+    }
+    
+    func saveÖvningar() {
+        if let encodedData = try? JSONEncoder().encode(övningar) {
+            UserDefaults.standard.set(encodedData, forKey: övningarKey)
+        }
+    }
+
 }
 
 
-struct ExerciseData: Identifiable {
-    let id = UUID()
-    let exerciseName: String
-    let exerciseDescription: String
-    let exerciseRep: Int
-    let exerciseSet: Int
-    let exerciseRest: Double
-    let exerciseWeight: Int
-    
-    
-}
 
-struct ExerciseDataList {
-    
-   // @Binding var Exercises : [String]
-    static let Exercises = [ExerciseData(exerciseName: "bänk", exerciseDescription: "tränar börst", exerciseRep: 4, exerciseSet: 5, exerciseRest: 1.30, exerciseWeight: 60)]
-    
-   
-}
 
 
 

@@ -7,24 +7,37 @@
 
 import SwiftUI
 
-struct WorkoutData: Identifiable {
-    let id = UUID()
-    let workoutName : String
-    let ExerciseInWorkout : ExerciseData
+class WorkoutsData : ObservableObject {
     
-  
-        
+    @Published var workouts : [WorkoutDataModel] = [] {
+        didSet {
+            saveWorkout()
+        }
+    }
+    let träningarKey : String = "träningar_list"
+    init() {
+        getWorkouts()
+    }
+    func getWorkouts() {
+      guard
+            let data = UserDefaults.standard.data(forKey: träningarKey),
+            let saveWorkout = try? JSONDecoder().decode([WorkoutDataModel].self, from: data)
+        else {return}
+        self.workouts = saveWorkout
+    }
+    func deleteWorkout(indexSet: IndexSet) {
+        workouts.remove(atOffsets: indexSet)
+    }
+    func addWorkout(workoutName: String) {
+        let newWorkout = WorkoutDataModel(workoutName: workoutName)
+        workouts.append(newWorkout)
+    }
+    func saveWorkout() {
+        if let encodedData = try? JSONEncoder().encode(workouts) {
+            UserDefaults.standard.set(encodedData, forKey: träningarKey)
+        }
+    }
+
 }
 
-    struct WorkoutList {
-        static let Workouts = [
-            WorkoutData(workoutName: "Workout 1", ExerciseInWorkout: ExerciseData(exerciseName: "Knäböj", exerciseDescription: "Ben", exerciseRep: 3, exerciseSet: 2, exerciseRest: 1.20, exerciseWeight: 60)),
-            
-            WorkoutData(workoutName: "Workout 2", ExerciseInWorkout: ExerciseData(exerciseName: "Benspark", exerciseDescription: "Ben", exerciseRep: 3, exerciseSet: 2, exerciseRest: 1.30, exerciseWeight: 70)),
-        ]
-    }
-//struct WorkoutData_Previews: PreviewProvider {
-    //static var previews: some View {
-      //  WorkoutData()
-   // }
-//}
+

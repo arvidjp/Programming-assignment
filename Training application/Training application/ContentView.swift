@@ -18,25 +18,14 @@ struct ContentView: View {
                     Minaträningspass()
                 }
                 NavigationLink(destination:MyExercises()) {
-                    
                     MinaÖvningar()
-                    
                 }
-                    
-                
-                } .padding()
+                Spacer()
                 }
-                
-            
-            
+                .padding()
         }
     }
-    
-   // var signout: some View {
-     //   Button(action:{}, label: { Text("Logga ut")
-       //         .foregroundColor(Color.red)
-         //   .font(.title3)})
-  //  }
+}
 
 struct Minaträningspass: View {
     var body: some View {
@@ -45,12 +34,11 @@ struct Minaträningspass: View {
                 .fill()
                 .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 40)
-                .stroke(lineWidth: 4)
+                .stroke()
                 Text("Mina träningspass")
                 .foregroundColor(Color.orange)
                 .font(.largeTitle)
         } .aspectRatio(10/3, contentMode: .fit)
-        
     }
 }
 
@@ -61,57 +49,60 @@ struct MinaÖvningar: View {
                 .fill()
                 .foregroundColor(Color.black)
             RoundedRectangle(cornerRadius: 40)
-                .stroke(lineWidth: 4)
+                .stroke()
                 Text("Mina övningar")
                 .foregroundColor(Color.orange)
                 .font(.largeTitle)
         } .aspectRatio(10/3, contentMode: .fit)
-        
     }
 }
 
-    struct DelaÖvningar: View {
-        var body: some View {
-            ZStack{
-                RoundedRectangle(cornerRadius: 40)
-                    .fill()
-                RoundedRectangle(cornerRadius: 40)
-                    .stroke(lineWidth: 4)
-                    Text("Dela övningar")
-                    .foregroundColor(Color.orange)
-                    .font(.largeTitle)
-            } .aspectRatio(10/3, contentMode: .fit)
-            .onTapGesture {
-                
-            }
-        }
-    }
 
-struct Mittkonto: View{
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 40)
-                .fill()
-            RoundedRectangle(cornerRadius: 40)
-                .stroke(lineWidth:4)
-                
-            Text("Mitt konto")
-                .foregroundColor(Color.orange)
-                .font(.largeTitle)
-            
-        }
-        .aspectRatio(10/3, contentMode: .fit)
-        .onTapGesture {
-            
-        }
-    }
-}
-        
+// Knapp för att kunna dela med sig av sina övningar till sina vänner, denna används inte i dagsläget
+//    struct DelaÖvningar: View {
+//        var body: some View {
+//            ZStack{
+//                RoundedRectangle(cornerRadius: 40)
+//                    .fill()
+//                RoundedRectangle(cornerRadius: 40)
+//                    .stroke(lineWidth: 4)
+//                    Text("Dela övningar")
+//                    .foregroundColor(Color.orange)
+//                    .font(.largeTitle)
+//            } .aspectRatio(10/3, contentMode: .fit)
+//            .onTapGesture {
+//        }
+//    }
+//}
+
+// En knapp för att en användare ska kunna logga ut från sitt konto, används inte i detta skede
+
+// var signout: some View {
+  //   Button(action:{}, label: { Text("Logga ut")
+    //         .foregroundColor(Color.red)
+      //   .font(.title3)})
+//  }
 
 
+// Hur knappen för att ta användaren till sitt konto ska se ut, används inte i detta läget
 
-    
-
+//struct Mittkonto: View{
+//    var body: some View {
+//        ZStack{
+//            RoundedRectangle(cornerRadius: 40)
+//                .fill()
+//            RoundedRectangle(cornerRadius: 40)
+//                .stroke(lineWidth:4)
+//
+//            Text("Mitt konto")
+//                .foregroundColor(Color.orange)
+//                .font(.largeTitle)
+//
+//        }
+//        .aspectRatio(10/3, contentMode: .fit)
+//
+//    }
+//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
